@@ -34,7 +34,7 @@
     "utils.js"
   ],
   "scripts": {
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "build": "babel ./src --out-dir ./build",
     "lint": "standard './src/**/*.js' './examples/**/*.js'"
   },
