@@ -1,4 +1,4 @@
-[![npm version](https://img.shields.io/npm/v/@danestves/md-squared-editor.svg?style=flat-square)](https://www.npmjs.com/package/@danestves/md-squared-editor)
+[![npm version](https://img.shields.io/npm/v/md-squared-editor.svg?style=flat-square)](https://www.npmjs.com/package/md-squared-editor)
 
 This is forked from [Pulse Editor - Platzi](https://github.com/PlatziDev/pulse-editor)
 
