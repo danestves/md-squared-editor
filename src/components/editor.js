@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Map as map, List as list } from 'immutable'
-import createParser from '@platzi/markdown'
+import createParser from '@danestves/markdown'
 
 import getSelection from '../utils/get-selection'
 import getSelected from '../utils/get-selected'

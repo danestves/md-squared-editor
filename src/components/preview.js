@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Markdown from '@platzi/react-markdown'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Markdown from '@danestves/react-markdown';
 
 class Preview extends Component {
   static propTypes = {
@@ -17,15 +17,15 @@ class Preview extends Component {
     value: PropTypes.string.isRequired
   };
 
-  render () {
+  render() {
     return (
       <Markdown
         className={this.props.className}
         content={this.context.value}
         parser={this.props.parser}
       />
-    )
+    );
   }
 }
 
-export default Preview
+export default Preview;
