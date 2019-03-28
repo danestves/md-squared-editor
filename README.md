@@ -11,13 +11,13 @@ A React markdown editor, extensible and fully customizable
 To install this editor just run:
 
 ```bash
-yarn add pulse-editor
+yarn add md-squared-editor
 ```
 
 Or with npm:
 
 ```bash
-npm i -S pulse-editor
+npm i md-squared-editor
 ```
 
 ## Usage example
@@ -31,7 +31,7 @@ import {
   Field,
   Preview,
   EmojiBar
-} from 'pulse-editor';
+} from 'md-squared-editor';
 import {
   Base,
   Bold,
@@ -45,7 +45,7 @@ import {
   Quote,
   Heading,
   Youtube
-} from 'pulse-editor/buttons';
+} from 'md-squared-editor/buttons';
 
 class MyEditor extends Component {
   handleChange = ({ selected, selection, markdown, html, native }) => {
@@ -152,4 +152,4 @@ export default MyEditor;
 
 ## Authors
 
-- Sergio Daniel Xalambrí ([@sergiodxa](https://twitter.com/sergiodxa)) - Platzi
+- Platzi ([@sergiodxa](https://github.com/PlatziDev))
