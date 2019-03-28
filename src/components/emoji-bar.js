@@ -48,7 +48,7 @@ class EmojiBar extends Component {
       return null;
 
     return (
-      <Fragment>
+      <div id='textNode'>
         {emojiMap
           .filter(this.searchEmojis)
           .map((emoji, code) => (
@@ -63,7 +63,7 @@ class EmojiBar extends Component {
             </Fab>
           ))
           .toArray()}
-      </Fragment>
+      </div>
     );
   }
 }
