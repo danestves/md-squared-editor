@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Map as map } from 'immutable';
 
 // import the list of emojis supported on markdown-it-emoji plugin
 import emojis from 'markdown-it-emoji/lib/data/full.json';
 
+// Material UI
+import { Fab } from '@material-ui/core';
+import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
+
 const emojiMap = map(emojis);
 
 class EmojiBar extends Component {
   static propTypes = {
     className: PropTypes.string
-  };
-
-  static defaultProps = {
-    className: 'PulseEditor-emojiBar'
   };
 
   static contextTypes = {
@@ -31,6 +31,7 @@ class EmojiBar extends Component {
   }) => {
     this.context.pickEmoji(code);
   };
+
   /**
    * Find emojis that match the code the user wrote
    * @param  {string}  emoji The emoji unicode character
@@ -43,27 +44,26 @@ class EmojiBar extends Component {
 
   render() {
     // if the user wrote only `:` or 1 char after `:` render null
-    // if (!this.context.emoji.writing || this.context.emoji.code.length < 2)
-    //   return null;
+    if (!this.context.emoji.writing || this.context.emoji.code.length < 2)
+      return null;
 
     return (
-      <section className={this.props.className}>
+      <Fragment>
         {emojiMap
+          .filter(this.searchEmojis)
           .map((emoji, code) => (
-            <button
+            <Fab
+              size='small'
               key={code}
-              type='button'
               data-code={code}
-              className={`${this.props.className}-emojiItem`}
+              aria-label={code}
+              //className={this.props.className}
               onClick={this.handleClick}>
-              {emoji}{' '}
-              <code className={`${this.props.className}-emojiCode`}>
-                :{code}:
-              </code>
-            </button>
+              {emoji}
+            </Fab>
           ))
           .toArray()}
-      </section>
+      </Fragment>
     );
   }
 }
