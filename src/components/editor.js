@@ -261,6 +261,7 @@ class MDSquaredEditor extends Component {
       state => {
         // create new value with the picked emoji
         const value = list(state.value.split(':'))
+          .pop()
           .push(code)
           .toArray()
           .join(':');

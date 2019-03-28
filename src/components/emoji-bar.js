@@ -1,17 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Map as map } from 'immutable';
+
+import EmojiItem from './emoji-item';
 
 // import the list of emojis supported on markdown-it-emoji plugin
 import emojis from 'markdown-it-emoji/lib/data/full.json';
 
-// Material UI
-import { Fab } from '@material-ui/core';
-import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
-
-const emojiMap = map(emojis);
+const emojiKeys = Object.keys(emojis);
 
 class EmojiBar extends Component {
+  state = {
+    expanded: null
+  };
+
   static propTypes = {
     className: PropTypes.string
   };
@@ -38,9 +39,27 @@ class EmojiBar extends Component {
    * @param  {string}  code  The emoji code
    * @return {Boolean}       If it match or not
    */
-  searchEmojis = (emoji, code) => {
-    return code.indexOf(this.context.emoji.code.toLowerCase()) === 0;
-  };
+  searchEmojis = code =>
+    code.indexOf(this.context.emoji.code.toLowerCase()) === 0;
+
+  getEmoji = code => ({ code, emoji: emojis[code] });
+
+  renderItem = ({ emoji, code }) =>
+    this.props.children ? (
+      cloneElement(this.props.children, {
+        emoji,
+        code,
+        key: code,
+        onPick: this.handleClick
+      })
+    ) : (
+      <EmojiItem
+        key={code}
+        emoji={emoji}
+        code={code}
+        onPick={this.handleClick}
+      />
+    );
 
   render() {
     // if the user wrote only `:` or 1 char after `:` render null
@@ -48,21 +67,11 @@ class EmojiBar extends Component {
       return null;
 
     return (
-      <div id='textNode'>
-        {emojiMap
+      <div className={this.props.className}>
+        {emojiKeys
           .filter(this.searchEmojis)
-          .map((emoji, code) => (
-            <Fab
-              size='small'
-              key={code}
-              data-code={code}
-              aria-label={code}
-              //className={this.props.className}
-              onClick={this.handleClick}>
-              {emoji}
-            </Fab>
-          ))
-          .toArray()}
+          .map(this.getEmoji)
+          .map(this.renderItem)}
       </div>
     );
   }
