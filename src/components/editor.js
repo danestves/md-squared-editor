@@ -1,18 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Map as map, List as list } from 'immutable'
-import createParser from '@danestves/markdown'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Map as map, List as list } from 'immutable';
+import createParser from '@danestves/markdown';
 
-import getSelection from '../utils/get-selection'
-import getSelected from '../utils/get-selected'
-import updateContent from '../utils/update-content'
-import setSelectionRange from '../utils/set-selection-range'
-import createChangeEvent from '../utils/create-change-event'
-import getKeyName from '../utils/get-key-name'
+import getSelection from '../utils/get-selection';
+import getSelected from '../utils/get-selected';
+import updateContent from '../utils/update-content';
+import setSelectionRange from '../utils/set-selection-range';
+import createChangeEvent from '../utils/create-change-event';
+import getKeyName from '../utils/get-key-name';
 
-class PulseEditor extends Component {
+// Material UI
+import classNames from 'classnames';
+import styles from './styles';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+class MDSquaredEditor extends Component {
   static propTypes = {
-    className: PropTypes.string,
     children: PropTypes.node.isRequired,
     defaultValue: PropTypes.string,
     name: PropTypes.string,
@@ -21,9 +25,8 @@ class PulseEditor extends Component {
   };
 
   static defaultProps = {
-    className: 'PulseEditor',
     defaultValue: '',
-    name: 'pulse-editor',
+    name: 'md-squared-editor',
     parser: {},
     editorRef: () => {}
   };
@@ -65,15 +68,15 @@ class PulseEditor extends Component {
    */
   shortcuts = map();
 
-  constructor (props, context) {
-    super(props, context)
+  constructor(props, context) {
+    super(props, context);
     if (props.editorRef) {
       // pass editor instance ref to parent component
-      props.editorRef(this)
+      props.editorRef(this);
     }
   }
 
-  getChildContext () {
+  getChildContext() {
     return {
       name: this.props.name,
       value: this.state.value,
@@ -87,11 +90,13 @@ class PulseEditor extends Component {
       expanded: this.state.expanded,
       disabled: false,
       emoji: this.state.emoji
-    }
+    };
   }
 
-  componentDidMount () {
-    this.domField = document.getElementById(`pulse-editor-${this.props.name}`)
+  componentDidMount() {
+    this.domField = document.getElementById(
+      `md-squared-editor-${this.props.name}`
+    );
   }
 
   /**
@@ -99,36 +104,36 @@ class PulseEditor extends Component {
    * @param  {string} value The new editor content
    */
   writeValue = event => {
-    const value = event.target.value
-    this.setState(state => {
-      const newState = { value, emoji: state.emoji }
+    const value = event.target.value;
+    this.setState(
+      state => {
+        const newState = { value, emoji: state.emoji };
 
-      if (value.lastIndexOf(':') === value.length - 1) {
-        if (
-          value.length - 2 < 0 ||
-          value[value.length - 2] === ' '
-        ) {
-          newState.emoji.writing = true
+        if (value.lastIndexOf(':') === value.length - 1) {
+          if (value.length - 2 < 0 || value[value.length - 2] === ' ') {
+            newState.emoji.writing = true;
+          }
         }
-      }
 
-      if (value.lastIndexOf(' ') === value.length - 1 || value.length === 0) {
-        newState.emoji = {
-          writing: false,
-          code: ''
+        if (value.lastIndexOf(' ') === value.length - 1 || value.length === 0) {
+          newState.emoji = {
+            writing: false,
+            code: ''
+          };
         }
-      }
 
-      if (state.emoji.writing) {
-        const valueSplitted = value.split(':')
-        newState.emoji.code = valueSplitted[valueSplitted.length - 1]
-      }
+        if (state.emoji.writing) {
+          const valueSplitted = value.split(':');
+          newState.emoji.code = valueSplitted[valueSplitted.length - 1];
+        }
 
-      return newState
-    }, () => {
-      // call the handle change method
-      this.handleChange(event)
-    })
+        return newState;
+      },
+      () => {
+        // call the handle change method
+        this.handleChange(event);
+      }
+    );
   };
 
   /**
@@ -139,27 +144,27 @@ class PulseEditor extends Component {
    */
   updateValue = ({ updater, handler, ...event }) => {
     // get the field selection
-    const selection = getSelection(this.domField)
+    const selection = getSelection(this.domField);
 
     // get the selected value
-    const selected = getSelected(this.state.value, selection)
+    const selected = getSelected(this.state.value, selection);
 
     // apply the feature updater to the selection
-    const updated = updater(selected, this.state.value, selection)
+    const updated = updater(selected, this.state.value, selection);
 
     // get the updated full value
-    const value = updateContent(this.state.value, selection, updated)
+    const value = updateContent(this.state.value, selection, updated);
 
     // update the state
     this.setState({ value }, () => {
       // get the scroll top
-      const scrollTop = this.domField.scrollTop
+      const scrollTop = this.domField.scrollTop;
 
       // focus in the field
-      this.domField.focus()
+      this.domField.focus();
 
       // set the scroll position
-      this.domField.scrollTop = scrollTop
+      this.domField.scrollTop = scrollTop;
 
       // get the new selection positions
       if (handler) {
@@ -170,15 +175,15 @@ class PulseEditor extends Component {
           updated,
           selection,
           selected
-        })
+        });
 
         // set the new selection in the field
-        setSelectionRange(newSelection, this.domField)
+        setSelectionRange(newSelection, this.domField);
       }
 
       // call the handle change method
-      this.handleChange(event)
-    })
+      this.handleChange(event);
+    });
   };
 
   /**
@@ -186,8 +191,8 @@ class PulseEditor extends Component {
    */
   syncScroll = event => {
     if (this.state.expanded || this.state.mode === 'wide') {
-      const { scrollTop } = event.target
-      this.previewNode.scrollTop = scrollTop
+      const { scrollTop } = event.target;
+      this.previewNode.scrollTop = scrollTop;
     }
   };
 
@@ -196,7 +201,7 @@ class PulseEditor extends Component {
    * @param {Object} shortcut Shortcut description and configuration
    */
   setShortcut = shortcut => {
-    this.shortcuts = this.shortcuts.set(shortcut.keyName, shortcut)
+    this.shortcuts = this.shortcuts.set(shortcut.keyName, shortcut);
   };
 
   /**
@@ -204,7 +209,7 @@ class PulseEditor extends Component {
    * @param {Object} shortcut Shortcut description and configuration
    */
   removeShortcut = shortcut => {
-    this.shortcuts = this.shortcuts.remove(shortcut.keyName)
+    this.shortcuts = this.shortcuts.remove(shortcut.keyName);
   };
 
   /**
@@ -212,20 +217,21 @@ class PulseEditor extends Component {
    * @param {Object} event The keyDown event
    */
   detectShortcut = event => {
-    const keyCode = event.keyCode || event.which
-    const keyName = getKeyName(keyCode)
+    const keyCode = event.keyCode || event.which;
+    const keyName = getKeyName(keyCode);
 
     if (keyName === 'tab') {
-      event.preventDefault()
-      const { start, end } = getSelection(this.domField)
-      const currentValue = this.state.value
-      const newValue = `${currentValue.substring(0, start)}\t${currentValue.substring(end)}`
-      return this.setState({ value: newValue },
-        () => {
-          this.domField.selectionEnd = start + 1
-          this.handleChange(event)
-        }
-      )
+      event.preventDefault();
+      const { start, end } = getSelection(this.domField);
+      const currentValue = this.state.value;
+      const newValue = `${currentValue.substring(
+        0,
+        start
+      )}\t${currentValue.substring(end)}`;
+      return this.setState({ value: newValue }, () => {
+        this.domField.selectionEnd = start + 1;
+        this.handleChange(event);
+      });
     }
 
     if (this.shortcuts.has(keyName)) {
@@ -235,18 +241,19 @@ class PulseEditor extends Component {
         altKey = false,
         updater,
         handler
-      } = this.shortcuts.get(keyName)
+      } = this.shortcuts.get(keyName);
 
       // if the shortcut use meta key and is not pressed
-      if (metaKey && !event.metaKey) return event
+      if (metaKey && !event.metaKey) return event;
       // if the shortcut use ctrl and is not pressed or is pressed altgr
-      if (ctrlKey && (!event.ctrlKey || (event.ctrlKey && event.altKey))) return event
+      if (ctrlKey && (!event.ctrlKey || (event.ctrlKey && event.altKey)))
+        return event;
       // if the shortcut use alt key and is not pressed
-      if (altKey && !event.altKey) return event
+      if (altKey && !event.altKey) return event;
 
-      event.preventDefault()
+      event.preventDefault();
 
-      this.updateValue({ updater, handler, ...event })
+      this.updateValue({ updater, handler, ...event });
     }
   };
 
@@ -258,7 +265,10 @@ class PulseEditor extends Component {
     this.setState(
       state => {
         // create new value with the picked emoji
-        const value = list(state.value.split(':')).pop().push(code).toArray().join(':')
+        const value = list(state.value.split(':'))
+          .push(code)
+          .toArray()
+          .join(':');
         // update state
         return {
           value: `${value}: `,
@@ -266,29 +276,33 @@ class PulseEditor extends Component {
             code: '',
             writing: false
           }
-        }
+        };
       },
       () => {
         // get the scroll top
-        const scrollTop = this.domField.scrollTop
+        const scrollTop = this.domField.scrollTop;
         // focus in the field
-        this.domField.focus()
+        this.domField.focus();
         // set the scroll position
-        this.domField.scrollTop = scrollTop
+        this.domField.scrollTop = scrollTop;
         // update value
-        this.handleChange({ type: 'PICK_EMOJI', target: this.domField, emojiCode: code })
+        this.handleChange({
+          type: 'PICK_EMOJI',
+          target: this.domField,
+          emojiCode: code
+        });
       }
-    )
+    );
   };
 
   /**
    * Handle the change event in the form
    */
-  handleChange (event) {
-    if (!this.props.onChange) return null
+  handleChange(event) {
+    if (!this.props.onChange) return null;
 
-    const selection = getSelection(this.domField)
-    const selected = getSelected(this.state.value, selection)
+    const selection = getSelection(this.domField);
+    const selected = getSelected(this.state.value, selection);
 
     return this.props.onChange(
       createChangeEvent(
@@ -298,17 +312,32 @@ class PulseEditor extends Component {
         event,
         this.parser(this.state.value, this.props.markdown)
       )
-    )
+    );
   }
 
-  render () {
-    const { parser, name, defaultValue, children, className, editorRef, ...props } = this.props
+  render() {
+    const {
+      parser,
+      name,
+      defaultValue,
+      children,
+      classes,
+      className,
+      editorRef,
+      ...props
+    } = this.props;
     return (
-      <div className={this.props.className} {...props}>
+      <div
+        className={classNames(classes.editor, this.props.className)}
+        {...props}>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 
-export default PulseEditor
+MDSquaredEditor.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(MDSquaredEditor);

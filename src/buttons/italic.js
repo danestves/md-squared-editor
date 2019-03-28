@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import BaseButton from './base'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import BaseButton from './base';
 
-import isMac from '../utils/is-mac'
+import isMac from '../utils/is-mac';
 
-function updater (selected) {
-  return `_${selected}_`
+function updater(selected) {
+  return `_${selected}_`;
 }
 
-function handler (event) {
+function handler(event) {
   return {
     start: 1 + event.selection.start,
     end: event.selection.end + 1
-  }
+  };
 }
 
 class ButtonItalic extends Component {
@@ -21,16 +21,12 @@ class ButtonItalic extends Component {
     children: PropTypes.node.isRequired
   };
 
-  static defaultProps = {
-    className: 'PulseEditor-button'
-  };
-
   static contextTypes = {
     updateValue: PropTypes.func.isRequired,
     setShortcut: PropTypes.func.isRequired
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.context.setShortcut({
       ctrlKey: !isMac(),
       metaKey: isMac(),
@@ -39,30 +35,29 @@ class ButtonItalic extends Component {
       keyName: 'i',
       updater,
       handler
-    })
+    });
   }
 
-  componenWillUnmount () {
-    this.context.removeShortcut({ keyName: 'i' })
+  componenWillUnmount() {
+    this.context.removeShortcut({ keyName: 'i' });
   }
 
   handleClick = event => {
-    event.preventDefault()
-    this.context.updateValue({ ...event, updater, handler })
+    event.preventDefault();
+    this.context.updateValue({ ...event, updater, handler });
   };
 
-  render () {
+  render() {
     return (
       <BaseButton
         className={this.props.className}
         onClick={this.handleClick}
         disabled={this.props.disabled}
-        name='italic'
-      >
+        name='italic'>
         {this.props.children}
       </BaseButton>
-    )
+    );
   }
 }
 
-export default ButtonItalic
+export default ButtonItalic;

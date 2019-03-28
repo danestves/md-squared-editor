@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Textarea from 'react-textarea-autosize'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// Material UI
+import classNames from 'classnames';
+import styles from './styles';
+import { withStyles, InputBase } from '@material-ui/core';
 
 class Field extends Component {
   static propTypes = {
@@ -26,22 +30,28 @@ class Field extends Component {
 
   handleKeyDown = this.context.detectShortcut;
 
-  render () {
+  render() {
     return (
-      <Textarea
-        minRows={3}
-        maxRows={10}
+      <InputBase
+        multiline
+        row={4}
+        rowsMax={10}
         name='value'
         {...this.props}
         className={this.props.className}
         disabled={this.context.disabled}
-        id={`pulse-editor-${this.context.name}`}
+        id={`md-squared-editor-${this.context.name}`}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         value={this.context.value}
+        fullWidth
       />
-    )
+    );
   }
 }
 
-export default Field
+Field.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default Field;

@@ -1,5 +1,5 @@
-import { Editor, ButtonBar, ButtonGroup, Field } from 'pulse-editor'
-import { Bold, Italic, Underline } from 'pulse-editor/buttons'
+import { Editor, ButtonBar, ButtonGroup, Field } from 'md-squared-editor'
+import { Bold, Italic, Underline } from 'md-squared-editor/buttons'
 import styled from 'styled-components'
 
 const StyledEditor = styled(Editor)`

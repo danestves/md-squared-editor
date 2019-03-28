@@ -5,11 +5,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.1.5",
-    "next": "^2.4.4",
-    "md-squared-editor": "^1.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "styled-components": "^2.1.0"
+    "babel-plugin-styled-components": "^1.10.0",
+    "md-squared-editor": "^1.0.1",
+    "next": "^8.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "styled-components": "^4.2.0"
   }
 }

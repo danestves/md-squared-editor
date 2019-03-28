@@ -1,21 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function ButtonGroup ({ children, className }) {
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  )
+// Material UI
+import classNames from 'classnames';
+import styles from './styles';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+function ButtonGroup({ children, classes }) {
+  return <div className={classes.buttonGroupContainer}>{children}</div>;
 }
 
 ButtonGroup.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired
-}
+  children: PropTypes.node.isRequired,
+  classes: PropTypes.object.isRequired
+};
 
-ButtonGroup.defaultProps = {
-  className: 'PulseEditor-buttonGroup'
-}
-
-export default ButtonGroup
+export default withStyles(styles)(ButtonGroup);

@@ -2,10 +2,10 @@
   "name": "full-usage",
   "license": "MIT",
   "dependencies": {
-    "next": "^2.3.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "pulse-editor": "^1.0.0"
+    "md-squared-editor": "^1.0.1",
+    "next": "^8.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   },
   "scripts": {
     "dev": "next",
