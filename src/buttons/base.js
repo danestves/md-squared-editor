@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Material UI
+import Fab from '@material-ui/core/Fab';
+
 const emptyFunc = () => {};
 
 /**
