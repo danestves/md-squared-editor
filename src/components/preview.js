@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Markdown from '@danestves/react-markdown';
-import { ScrollSyncPane } from 'react-scroll-sync';
 
 class Preview extends Component {
   static propTypes = {
@@ -20,13 +19,11 @@ class Preview extends Component {
 
   render() {
     return (
-      <ScrollSyncPane>
-        <Markdown
-          className={this.props.className}
-          content={this.context.value}
-          parser={this.props.parser}
-        />
-      </ScrollSyncPane>
+      <Markdown
+        className={this.props.className}
+        content={this.context.value}
+        parser={this.props.parser}
+      />
     );
   }
 }

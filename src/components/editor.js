@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Map as map, List as list } from 'immutable';
 import createParser from '@danestves/markdown';
 
-import { ScrollSync } from 'react-scroll-sync';
-
 import getSelection from '../utils/get-selection';
 import getSelected from '../utils/get-selected';
 import updateContent from '../utils/update-content';
@@ -325,7 +323,7 @@ class MDSquaredEditor extends Component {
     } = this.props;
     return (
       <div className={this.props.className} {...props}>
-        <ScrollSync>{this.props.children}</ScrollSync>
+        {this.props.children}
       </div>
     );
   }
