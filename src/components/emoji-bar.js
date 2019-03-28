@@ -31,7 +31,6 @@ class EmojiBar extends Component {
   }) => {
     this.context.pickEmoji(code);
   };
-
   /**
    * Find emojis that match the code the user wrote
    * @param  {string}  emoji The emoji unicode character
@@ -44,13 +43,12 @@ class EmojiBar extends Component {
 
   render() {
     // if the user wrote only `:` or 1 char after `:` render null
-    if (!this.context.emoji.writing || this.context.emoji.code.length < 2)
-      return null;
+    // if (!this.context.emoji.writing || this.context.emoji.code.length < 2)
+    //   return null;
 
     return (
       <section className={this.props.className}>
         {emojiMap
-          .filter(this.searchEmojis)
           .map((emoji, code) => (
             <button
               key={code}

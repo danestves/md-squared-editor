@@ -1,23 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Material UI
-import classNames from 'classnames';
-import styles from './styles';
-import { withStyles } from '@material-ui/core';
-
-function ToolbarContainer({ children, className, classes }) {
-  return (
-    <div className={classNames(classes.toolbarContainer, className)}>
-      {children}
-    </div>
-  );
+function ToolbarContainer({ children, className }) {
+  return <div className={className}>{children}</div>;
 }
 
 ToolbarContainer.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired
+  children: PropTypes.node.isRequired
 };
 
-export default withStyles(styles)(ToolbarContainer);
+export default ToolbarContainer;

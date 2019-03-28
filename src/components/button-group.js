@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Material UI
-import classNames from 'classnames';
-import styles from './styles';
-import withStyles from '@material-ui/core/styles/withStyles';
-
-function ButtonGroup({ children, classes }) {
-  return <div className={classes.buttonGroupContainer}>{children}</div>;
+function ButtonGroup({ children, className }) {
+  return <div className={className}>{children}</div>;
 }
 
 ButtonGroup.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired
+  children: PropTypes.node.isRequired
 };
 
-export default withStyles(styles)(ButtonGroup);
+export default ButtonGroup;

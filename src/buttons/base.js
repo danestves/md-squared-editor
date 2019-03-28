@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Material UI
-import styles from './styles';
-import { withStyles, Fab } from '@material-ui/core';
-
 const emptyFunc = () => {};
 
 /**
@@ -12,15 +8,12 @@ const emptyFunc = () => {};
  * @param {Object} props The base button props
  */
 function BaseButton(props) {
-  const { classes } = props;
-
   return (
     <Fab
       variant='extended'
       size='small'
       {...props}
       className={props.className}
-      classes={{ root: classes.buttonBase }}
       onClick={props.onClick}
       name={props.name}
       disabled={props.disabled}
@@ -34,8 +27,7 @@ BaseButton.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 BaseButton.defaultProps = {
@@ -43,4 +35,4 @@ BaseButton.defaultProps = {
   onClick: emptyFunc
 };
 
-export default withStyles(styles)(BaseButton);
+export default BaseButton;

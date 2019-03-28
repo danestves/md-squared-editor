@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Material UI
-import classNames from 'classnames';
-import styles from './styles';
-import { withStyles, InputBase } from '@material-ui/core';
+import { InputBase } from '@material-ui/core';
 
 class Field extends Component {
   static propTypes = {
     className: PropTypes.string
-  };
-
-  static defaultProps = {
-    className: 'PulseEditor-field'
   };
 
   static contextTypes = {
@@ -49,9 +43,5 @@ class Field extends Component {
     );
   }
 }
-
-Field.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default Field;

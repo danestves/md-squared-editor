@@ -10,11 +10,6 @@ import setSelectionRange from '../utils/set-selection-range';
 import createChangeEvent from '../utils/create-change-event';
 import getKeyName from '../utils/get-key-name';
 
-// Material UI
-import classNames from 'classnames';
-import styles from './styles';
-import withStyles from '@material-ui/core/styles/withStyles';
-
 class MDSquaredEditor extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -321,23 +316,16 @@ class MDSquaredEditor extends Component {
       name,
       defaultValue,
       children,
-      classes,
       className,
       editorRef,
       ...props
     } = this.props;
     return (
-      <div
-        className={classNames(classes.editor, this.props.className)}
-        {...props}>
+      <div className={this.props.className} {...props}>
         {this.props.children}
       </div>
     );
   }
 }
 
-MDSquaredEditor.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(MDSquaredEditor);
+export default MDSquaredEditor;
