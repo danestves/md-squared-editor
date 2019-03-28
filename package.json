@@ -48,7 +48,8 @@
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "react-scroll-sync": "^0.7.0"
   },
   "standard": {
     "parser": "babel-eslint",

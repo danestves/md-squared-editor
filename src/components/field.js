@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ScrollSyncPane } from 'react-scroll-sync';
 
 // Material UI
 import InputBase from '@material-ui/core/InputBase';
@@ -26,20 +27,22 @@ class Field extends Component {
 
   render() {
     return (
-      <InputBase
-        multiline
-        row={4}
-        rowsMax={10}
-        name='value'
-        {...this.props}
-        className={this.props.className}
-        disabled={this.context.disabled}
-        id={`md-squared-editor-${this.context.name}`}
-        onChange={this.handleChange}
-        onKeyDown={this.handleKeyDown}
-        value={this.context.value}
-        fullWidth
-      />
+      <ScrollSyncPane>
+        <InputBase
+          multiline
+          row={4}
+          rowsMax={10}
+          name='value'
+          {...this.props}
+          className={this.props.className}
+          disabled={this.context.disabled}
+          id={`md-squared-editor-${this.context.name}`}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+          value={this.context.value}
+          fullWidth
+        />
+      </ScrollSyncPane>
     );
   }
 }

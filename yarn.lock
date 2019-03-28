@@ -3181,6 +3181,11 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-scroll-sync@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-sync/-/react-scroll-sync-0.7.0.tgz#935387b2b877dcc7032ad9410155b0b7d7951048"
+  integrity sha512-PL4MWceh596EA+z5zLPYYB7HfctjShh+XTOZ5FgZnxwA66g1Fnx0kK0DMjma23cqlhXBvYLA7Fnp67afzBwdHA==
+
 react-transition-group@^2.2.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.7.1.tgz#1fe6d54e811e8f9dfd329aa836b39d9cd16587cb"
