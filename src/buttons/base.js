@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Material UI
-import Fab from '@material-ui/core/Fab';
-
 const emptyFunc = () => {};
 
 /**
@@ -12,9 +9,7 @@ const emptyFunc = () => {};
  */
 function BaseButton(props) {
   return (
-    <Fab
-      variant='extended'
-      size='small'
+    <button
       {...props}
       className={props.className}
       onClick={props.onClick}
