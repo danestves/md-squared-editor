@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// Material UI
-import InputBase from '@material-ui/core/InputBase';
-
 class Field extends Component {
   static propTypes = {
     className: PropTypes.string
@@ -26,10 +23,7 @@ class Field extends Component {
 
   render() {
     return (
-      <InputBase
-        multiline
-        row={4}
-        rowsMax={10}
+      <textarea
         name='value'
         {...this.props}
         className={this.props.className}
@@ -37,8 +31,6 @@ class Field extends Component {
         id={`md-squared-editor-${this.context.name}`}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
-        value={this.context.value}
-        fullWidth
       />
     );
   }

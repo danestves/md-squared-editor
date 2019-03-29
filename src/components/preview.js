@@ -9,7 +9,6 @@ class Preview extends Component {
   };
 
   static defaultProps = {
-    className: 'PulseEditor-preview',
     parser: {}
   };
 
