@@ -24,13 +24,14 @@ class Field extends Component {
   render() {
     return (
       <textarea
-        name='value'
+        name="value"
         {...this.props}
         className={this.props.className}
         disabled={this.context.disabled}
         id={`md-squared-editor-${this.context.name}`}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
+        value={this.context.value}
       />
     );
   }

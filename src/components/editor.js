@@ -185,7 +185,7 @@ class MDSquaredEditor extends Component {
    * Syncronize scroll between the textarea and the preview
    */
   syncScroll = event => {
-    if (this.state.expanded || this.state.mode === 'wide') {
+    if (!this.state.expanded || !this.state.mode === 'wide') {
       const { scrollTop } = event.target;
       this.previewNode.scrollTop = scrollTop;
     }
