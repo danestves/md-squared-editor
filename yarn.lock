@@ -97,22 +97,6 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@danestves/markdown@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@danestves/markdown/-/markdown-1.0.4.tgz#20dbe9eea077a7f589ebaa08ef13636951966ade"
-  integrity sha512-s7oKIalj5mior1/m2adazgM+CgOj/06JpZ62D+tAnNSZiezyShG789TheW7WCxNPR6Xp9s4MN5Hna2FYuraYSw==
-  dependencies:
-    markdown-it "^8.4.2"
-    markdown-it-abbr "^1.0.4"
-    markdown-it-deflist "^2.0.3"
-    markdown-it-emoji "^1.4.0"
-    markdown-it-highlightjs "^3.0.0"
-    markdown-it-implicit-figures "^0.9.0"
-    markdown-it-ins "^2.0.0"
-    markdown-it-link-attributes "^2.1.0"
-    markdown-it-mark "^2.0.0"
-    markdown-it-video "^0.6.3"
-
 "@danestves/markdown@^1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@danestves/markdown/-/markdown-1.0.5.tgz#00d99f3534bb468c116903415c5c21a3daef4f48"
@@ -129,12 +113,12 @@
     markdown-it-prism "^2.0.1"
     markdown-it-video "^0.6.3"
 
-"@danestves/react-markdown@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@danestves/react-markdown/-/react-markdown-1.0.5.tgz#5ce01c2e22f115fbaffb00cf7202ba5deb11bdcb"
-  integrity sha512-icblQzjt7q2crRbgg95vYoK000S47+8di1xO7BghJ2/Cu1SwypO6FmKNgZhc9bFueN+R65RUjzahALTHpXLc1Q==
+"@danestves/react-markdown@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@danestves/react-markdown/-/react-markdown-1.0.6.tgz#4c5eb1ce0fbeb5f74aafb531409330a5d1050a87"
+  integrity sha512-cfR/llME2ELAPMJvsU5lgJfJPHekFLucvf4zdofNvuA3DlAilpyRwwLUtUIpdjBjfxJmVp657Y7TBcTf3vOoEQ==
   dependencies:
-    "@danestves/markdown" "^1.0.4"
+    "@danestves/markdown" "^1.0.5"
 
 "@material-ui/core@^3.9.2":
   version "3.9.2"
@@ -2041,11 +2025,6 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-highlight.js@^9.9.0:
-  version "9.15.6"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
-  integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
-
 hoist-non-react-statics@^2.3.1:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
@@ -2566,11 +2545,6 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash.flow@^3.1.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.flow/-/lodash.flow-3.5.0.tgz#87bf40292b8cf83e4e8ce1a3ae4209e20071675a"
-  integrity sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=
-
 lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
@@ -2609,14 +2583,6 @@ markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
-
-markdown-it-highlightjs@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-highlightjs/-/markdown-it-highlightjs-3.0.0.tgz#ed3dd619ca2b98e6bf2112d163bf444043340210"
-  integrity sha1-7T3WGcormOa/IRLRY79EQEM0AhA=
-  dependencies:
-    highlight.js "^9.9.0"
-    lodash.flow "^3.1.0"
 
 markdown-it-implicit-figures@^0.9.0:
   version "0.9.0"
